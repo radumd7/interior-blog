@@ -12,26 +12,21 @@ export default function Navbar() {
             </figure>
             <nav>
                 <ul className="flex space-x-2">
-                    <li>
-                        <Link
-                            href='/living-room'
-                            passHref
-                        >
-                            <a>
-                                Living Room
-                            </a>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            href='/kitchen'
-                            passHref
-                        >
-                            <a>
-                                Kitchen
-                            </a>
-                        </Link>
-                    </li>
+                    {
+                        [
+                            {url: '/living-room', display: 'Living Room'},
+                            {url: '/kitchen', display: 'Kitchen'},
+                            {url: '/dining-room', display: 'Dining Room'},
+                            {url: '/bedroom', display: 'Bedroom'},
+                            {url: '/bathroom', display: 'Bathroom'},
+                        ].map((location) => (
+                            <li key={location.display}>
+                                <Link href={location.url} passHref>
+                                    <a>{location.display}</a>
+                                </Link>
+                            </li>
+                        ))
+                    }
                 </ul>
             </nav>
         </header>
