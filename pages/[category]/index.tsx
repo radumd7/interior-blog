@@ -8,7 +8,7 @@ const CategoryPage = ({ posts, category }: InferGetStaticPropsType<typeof getSta
     const getTitle = (category: string) => {
         const arr: string[] = []
         category.split('-').map((word: string) => arr.push(word[0].toUpperCase() + word.slice(1).toLowerCase()));
-        return arr.join(' ')+' | The Interiorist';
+        return arr.join(' ')+' | The Savinterior';
     };
     return(
         <>

@@ -9,8 +9,8 @@ export default function BlogPost({ post }: InferGetStaticPropsType< typeof getSt
     return(
         <>
             <Head>
-                <title>{post.fields.title}</title>
-                <meta name='description' content={post.fields.title + ' | The Interiorist.'}/>
+                <title>{post.fields.title + ' | The Savinterior'}</title>
+                <meta name='description' content={post.fields.title + ' | The Savinterior.'}/>
             </Head>
             <article>
                 <div className='w-full relative'>

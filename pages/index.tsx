@@ -8,8 +8,8 @@ const Home = ({ posts }: InferGetServerSidePropsType< typeof getServerSideProps 
   return (
     <>
       <Head>
-        <title>The Interiorist</title>
-        <meta name='description' content='Get the latest home decor inspiration and news from the editors of The Interiorist.'/>
+        <title>The Savinterior</title>
+        <meta name='description' content='Get the latest home decor inspiration and news from the editors of The Savinterior.'/>
       </Head>
       <div className='w-full relative'>
         <div className='relative w-full h-screen'>
