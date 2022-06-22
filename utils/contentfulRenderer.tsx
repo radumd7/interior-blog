@@ -7,17 +7,12 @@ export const renderOptions = {
         const source = 'https:' + node.data.target.fields.file.url;
         const alt = node.data.target.fields.title;
         return(
-          <div
-            style={{
-              position: 'relative',
-              width: '400px',
-              height: '400px'
-            }}
-          >
+          <div className="contentful_image_container">
             <Image
               src={source}
               alt={alt}
               layout='fill'
+              objectFit="cover"
             />
           </div>
         );

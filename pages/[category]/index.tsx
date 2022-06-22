@@ -33,7 +33,7 @@ const CategoryPage = ({ posts, category }: InferGetStaticPropsType<typeof getSta
                 <div className='relative w-full h-screen'>
                 <Image
                     src={`/hero-${category}.jpg`}
-                    alt={`${category} Hero Image`}
+                    alt={`${category} Hero Image | The Savinterior`}
                     layout='fill'
                     objectFit='cover'
                     priority

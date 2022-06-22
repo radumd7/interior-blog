@@ -15,13 +15,13 @@ const Home = ({ posts }: InferGetServerSidePropsType< typeof getServerSideProps 
         <div className='relative w-full h-screen'>
           <Image
             src='/hero-interior-design.jpg'
-            alt='Interior Design Hero Image'
+            alt='Interior Design Hero Image | The Savinterior'
             layout='fill'
             objectFit='cover'
             priority
           />
         </div>
-        <div className='absolute top-0 left-0 flex items-center justify-center w-full h-full bg-black/50'>
+        <div className='absolute top-0 left-0 flex items-center justify-center w-full h-full bg-black/60'>
           <h1 className='text-center text-3xl md:text-6xl lg:text-8xl xl:text-9xl font-extrabold text-white uppercase select-none font-roboto'>The inspiration<br/>you deserve.</h1>
         </div>
       </div>
@@ -63,7 +63,10 @@ export const getServerSideProps: GetServerSideProps = async(context) => {
     space: process.env.CONTENTFUL_SPACE as string,
     accessToken: process.env.CONTENTFUL_ACCESS as string
   });
-  const posts = await client.getEntries({ content_type: 'blogPost' });
+  const posts = await client.getEntries({
+    content_type: 'blogPost',
+    select: 'fields.slug,fields.category,fields.title,fields.thumbnail'
+  });
   return{
     props:{
       posts

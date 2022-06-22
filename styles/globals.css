@@ -8,3 +8,6 @@ html {
 body {
     @apply bg-white;
 }
+.contentful_image_container{
+    @apply aspect-w-16 aspect-h-9 relative;
+}

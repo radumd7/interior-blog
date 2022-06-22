@@ -18,7 +18,7 @@ const Section: React.FC<SectionProps> = ({
                     <h2 className="font-bold text-3xl tracking-wide font-serif text-blue-900 underline underline-offset-[10px]">{title}</h2>
                 </a>
             </Link>
-            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-10">
+            <ul className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-10">
                 {posts.map((post) => (
                     <li key={post.fields.slug}>
                         <BlogCard
