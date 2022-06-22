@@ -31,7 +31,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
                         />
                     </div>
                     <div className="py-4">
-                        <h3 className="font-bold tracking-wide font-mono text-gray-700 antialiased capitalize">{title}</h3>
+                        <h3 className="font-bold tracking-wider font-mono text-gray-700 antialiased capitalize">{title}</h3>
                     </div>
                 </div>
             </a>

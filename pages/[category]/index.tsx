@@ -10,6 +10,20 @@ const CategoryPage = ({ posts, category }: InferGetStaticPropsType<typeof getSta
         category.split('-').map((word: string) => arr.push(word[0].toUpperCase() + word.slice(1).toLowerCase()));
         return arr.join(' ')+' | The Savinterior';
     };
+    const getH1 = (category: string) => {
+        switch(category) {
+            case 'living-room':
+                return 'Living Room';
+            case 'kitchen':
+                return 'Kitchen';
+            case 'dining-room':
+                return 'Dining Room';
+            case 'bedroom':
+                return 'Bedroom';
+            case 'bathroom':
+                return 'Bathroom';
+        }
+    };
     return(
         <>
             <Head>
@@ -25,8 +39,11 @@ const CategoryPage = ({ posts, category }: InferGetStaticPropsType<typeof getSta
                     priority
                 />
                 </div>
-                <div className='absolute top-0 left-0 flex items-center justify-center w-full h-full bg-black/40'>
-                    <h1 className='text-center text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold text-white uppercase select-none font-roboto'>The inspiration<br/>you deserve.</h1>
+                <div className='absolute top-0 left-0 flex items-center justify-center w-full h-full bg-black/60 prose md:prose-md lg:prose-lg xl:prose-xl mx-auto max-w-none'>
+                    <h1 className='text-white text-center capitalize'>
+                        {getH1(category)}<br/>
+                        <span>Inspiration & Ideas</span>
+                    </h1>
                 </div>
             </div>
             {

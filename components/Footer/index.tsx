@@ -5,13 +5,13 @@ export default function Footer() {
         <footer
             className="flex flex-col space-y-4 bg-blue-900 items-center text-white p-4"
         >
-            <p className="text-3xl">Follow us on Social Media</p>
+            <p>Follow us on Social Media</p>
             <ul className="flex items-center justify-center space-x-10">
                 <li><FacebookIcon/></li>
                 <li><InstagramIcon/></li>
                 <li><PinterestIcon/></li>
             </ul>
-            <p>©2022 Interior Design Blog. All Rights Reserved.</p>
+            <p className="text-sm">©2022 The Savinterior. All Rights Reserved.</p>
         </footer>
     );
 };
