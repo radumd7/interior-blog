@@ -12,13 +12,13 @@ const Section: React.FC<SectionProps> = ({
     title
 }) => {
     return(
-        <section className="flex flex-col space-y-4 lg:space-y-10">
+        <section className="flex flex-col space-y-6 md:space-y-10">
             <Link href={`/${category}`} passHref>
                 <a className="w-fit">
                     <h2 className="font-bold text-3xl tracking-wide font-serif text-blue-900 underline underline-offset-[10px]">{title}</h2>
                 </a>
             </Link>
-            <ul className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-10">
+            <ul className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-10">
                 {posts.map((post) => (
                     <li key={post.fields.slug}>
                         <BlogCard

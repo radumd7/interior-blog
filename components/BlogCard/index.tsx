@@ -21,18 +21,16 @@ const BlogCard: React.FC<BlogCardProps> = ({
             passHref
         >
             <a>
-                <div>
-                    <div className="w-full aspect-w-1 aspect-h-1 relative shadow-lg">
-                        <Image
-                            src={image.url}
-                            alt={image.alt}
-                            layout='fill'
-                            objectFit="cover"
-                        />
-                    </div>
-                    <div className="py-4">
-                        <h3 className="font-bold tracking-wider font-mono text-gray-700 antialiased capitalize">{title}</h3>
-                    </div>
+                <div className="w-full aspect-w-1 aspect-h-1 relative shadow-lg">
+                    <Image
+                        src={image.url}
+                        alt={image.alt}
+                        layout='fill'
+                        objectFit="cover"
+                    />
+                </div>
+                <div className="py-4">
+                    <h3 className="text-sm font-bold tracking-wider font-mono text-gray-700 antialiased capitalize">{title}</h3>
                 </div>
             </a>
         </Link>

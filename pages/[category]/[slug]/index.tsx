@@ -39,7 +39,7 @@ export default function BlogPost({ sections, postData }: InferGetStaticPropsType
                             </section>
                         )
                     }
-                    {sections.map((section: any, index: any) => {
+                    {sections?.map((section: any, index: any) => {
                         if(section.type === 'block-section'){
                             return(
                                 <BlockSection
@@ -83,7 +83,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         content_type: 'blogPost',
         'fields.slug': params?.slug
     });
-    const nodes = (post.items[0] as any).fields.content.content as any[];
+
+    const nodes = (post.items[0] as any).fields.content?.content || null;
     
     const sections = blogSectionFormat(nodes);
 
@@ -98,6 +99,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
                     alt: (post.items[0].fields as any).title + ' | The Savinterior'
                 }
             },
-        }
+        },
+        revalidate: 60
     };
 };

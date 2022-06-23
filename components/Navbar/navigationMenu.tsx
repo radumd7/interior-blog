@@ -53,7 +53,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
                                     className={`${isActive(location.url) && 'bg-blue-900 text-white'} font-semibold tracking-wide rounded-full text-sm w-full flex items-center p-4`}
                                 >
                                     <Link href={location.url} passHref>
-                                        <a onClick={() => setState(s => !s)}>{location.display}</a>
+                                        <a>{location.display}</a>
                                     </Link>
                                 </li>
                             ))

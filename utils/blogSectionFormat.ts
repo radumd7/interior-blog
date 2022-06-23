@@ -1,4 +1,7 @@
 export const blogSectionFormat = (nodes: any) => {
+    if(!nodes){
+        return null;
+    };
     let sections: any[] = [];
     for(let i = 0; i < nodes.length; i++){
         if(nodes[i].nodeType === 'hr'){

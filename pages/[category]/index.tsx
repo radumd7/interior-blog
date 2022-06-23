@@ -13,15 +13,35 @@ const CategoryPage = ({ posts, category }: InferGetStaticPropsType<typeof getSta
     const getH1 = (category: string) => {
         switch(category) {
             case 'living-room':
-                return 'Living Room';
+                return{
+                    title: 'Living Room',
+                    hook: 'Inspiration & Ideas',
+                    description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque fuga adipisci sunt magni cumque assumenda doloribus minima exercitationem aliquam officia voluptatibus, alias blanditiis eligendi beatae. Sed numquam error ipsam eveniet!'
+                };
             case 'kitchen':
-                return 'Kitchen';
+                return {
+                    title: 'Kitchen',
+                    hook: 'Inspiration & Ideas',
+                    description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque fuga adipisci sunt magni cumque assumenda doloribus minima exercitationem aliquam officia voluptatibus, alias blanditiis eligendi beatae. Sed numquam error ipsam eveniet!'
+                };
             case 'dining-room':
-                return 'Dining Room';
+                return {
+                    title: 'Dining Room',
+                    hook: 'Inspiration & Ideas',
+                    description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque fuga adipisci sunt magni cumque assumenda doloribus minima exercitationem aliquam officia voluptatibus, alias blanditiis eligendi beatae. Sed numquam error ipsam eveniet!'
+                };
             case 'bedroom':
-                return 'Bedroom';
+                return {
+                    title: 'Bedroom',
+                    hook: 'Inspiration & Ideas',
+                    description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque fuga adipisci sunt magni cumque assumenda doloribus minima exercitationem aliquam officia voluptatibus, alias blanditiis eligendi beatae. Sed numquam error ipsam eveniet!'
+                };
             case 'bathroom':
-                return 'Bathroom';
+                return {
+                    title: 'Bathroom',
+                    hook: 'Inspiration & Ideas',
+                    description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque fuga adipisci sunt magni cumque assumenda doloribus minima exercitationem aliquam officia voluptatibus, alias blanditiis eligendi beatae. Sed numquam error ipsam eveniet!'
+                };
         }
     };
     return(
@@ -41,15 +61,18 @@ const CategoryPage = ({ posts, category }: InferGetStaticPropsType<typeof getSta
                 </div>
                 <div className='absolute top-0 left-0 flex items-center justify-center w-full h-full bg-black/60 prose md:prose-md lg:prose-lg xl:prose-xl mx-auto max-w-none'>
                     <h1 className='text-white text-center capitalize'>
-                        {getH1(category)}<br/>
-                        <span>Inspiration & Ideas</span>
+                        {getH1(category)?.title}<br/>
+                        <span>{getH1(category)?.hook}</span>
                     </h1>
                 </div>
             </div>
             {
                 posts.items.length > 0 && (
                     <section className="container mx-auto py-4 lg:py-10">
-                        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-10">
+                        <div className="prose md:prose-lg lg:prose-xl mx-auto pb-4 lg:pb-10 px-4">
+                            <p>{getH1(category)?.description}</p>
+                        </div>
+                        <ul className="grid grid-cols-2 lg:grid-cols-4 p-4 lg:p-10 gap-4 lg:gap-10">
                             {posts.items.map((post: any) => {
                                 const { slug, title, category, thumbnail } = post.fields;
                                 return(
@@ -100,6 +123,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         props: {
             posts,
             category: params?.category
-        }
+        },
+        revalidate: 60
     }
 };

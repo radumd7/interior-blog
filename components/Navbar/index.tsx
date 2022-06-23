@@ -14,6 +14,15 @@ export default function Navbar() {
         };
         return false;
     };
+    React.useEffect(() => {
+        const closeMenu = () => {
+            setMenu(false);
+        };
+        router.events.on('routeChangeStart', closeMenu);
+        return () => {
+            router.events.off('routeChangeStart', closeMenu);
+        };
+    }, [router.events])
     return(
         <header className="bg-blue-900 h-16 text-white flex items-center justify-between lg:justify-start space-x-4 w-full shadow-md fixed top-0 left-0 z-10">
             <figure className="p-4 h-full flex items-center">

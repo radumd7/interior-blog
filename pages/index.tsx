@@ -1,10 +1,37 @@
-import type { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next'
+import type { GetServerSideProps, GetStaticProps, InferGetServerSidePropsType, InferGetStaticPropsType, NextPage } from 'next'
 import { createClient } from 'contentful';
 import Image from 'next/image';
 import Section from '../components/Pages/Homepage/Section';
 import Head from 'next/head';
+import React from 'react';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
-const Home = ({ posts }: InferGetServerSidePropsType< typeof getServerSideProps >) => {
+const HeroSection: React.FC<{
+  imageUrl: string;
+}> = ({
+  imageUrl
+}) => {
+  return(
+    <div className='w-full relative'>
+      <div className='relative w-full h-screen'>
+        <Image
+          src={imageUrl}
+          alt='Interior Design Hero Image | The Savinterior'
+          layout='fill'
+          objectFit='cover'
+          priority
+        />
+      </div>
+      <div className='absolute top-0 left-0 flex items-center justify-center w-full h-full bg-black/60'>
+        <h1 className='text-center text-3xl md:text-6xl lg:text-8xl xl:text-9xl font-extrabold text-white uppercase select-none font-roboto'>
+          The inspiration<br/>you deserve.
+        </h1>
+      </div>
+    </div>
+  );
+};
+
+const Home = ({ posts }: InferGetStaticPropsType< typeof getStaticProps >) => {
   return (
     <>
       <Head>
@@ -25,16 +52,16 @@ const Home = ({ posts }: InferGetServerSidePropsType< typeof getServerSideProps 
           <h1 className='text-center text-3xl md:text-6xl lg:text-8xl xl:text-9xl font-extrabold text-white uppercase select-none font-roboto'>The inspiration<br/>you deserve.</h1>
         </div>
       </div>
-      <div className='container mx-auto flex flex-col space-y-4 py-4 md:px-4'>
+      <div className='container mx-auto flex flex-col space-y-4 p-4 md:p-10'>
         <Section
           posts={posts.items.filter((p: any) => p.fields.category === 'living-room')}
           category='living-room'
-          title='Living Room Inspiration'
+          title='Living Room'
         />
         <Section
           posts={posts.items.filter((p: any) => p.fields.category === 'kitchen')}
           category='kitchen'
-          title='Kitchen Love'
+          title='Kitchen'
         />
         <Section
           posts={posts.items.filter((p: any) => p.fields.category === 'bedroom')}
@@ -58,7 +85,7 @@ const Home = ({ posts }: InferGetServerSidePropsType< typeof getServerSideProps 
 
 export default Home
 
-export const getServerSideProps: GetServerSideProps = async(context) => {
+export const getStaticProps: GetStaticProps = async() => {
   const client = createClient({
     space: process.env.CONTENTFUL_SPACE as string,
     accessToken: process.env.CONTENTFUL_ACCESS as string
@@ -70,6 +97,7 @@ export const getServerSideProps: GetServerSideProps = async(context) => {
   return{
     props:{
       posts
-    }
+    },
+    revalidate: 60
   };
 };
